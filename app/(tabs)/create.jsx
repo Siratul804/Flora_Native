@@ -1,11 +1,12 @@
-import { View, Text } from "react-native";
+import { ScrollView, Text, View, TextInput } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
 
 const Create = () => {
   return (
-    <View>
-      <Text>Create</Text>
-    </View>
+    <SafeAreaView className="bg-black h-full p-4 ">
+      <ScrollView contentContainerStyle={{ height: "100%" }}></ScrollView>
+    </SafeAreaView>
   );
 };
 

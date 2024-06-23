@@ -1,11 +1,16 @@
-import { View, Text } from "react-native";
-import React from "react";
+import { ScrollView, Text, View, TextInput } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import SearchInput from "../components/SearchInput";
 
 const Home = () => {
   return (
-    <View className="flex-1 items-center justify-center bg-white">
-      <Text>Home</Text>
-    </View>
+    <SafeAreaView className="bg-black h-full p-4 ">
+      <ScrollView contentContainerStyle={{ height: "100%" }}>
+        <View className="">
+          <SearchInput />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
