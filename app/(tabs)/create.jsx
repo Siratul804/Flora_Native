@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -7,18 +7,52 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
+  Button,
 } from "react-native";
 import { styled } from "nativewind";
 import * as ImagePicker from "expo-image-picker";
 import { SafeAreaView } from "react-native-safe-area-context";
 import RNPickerSelect from "react-native-picker-select";
 import { MaterialIcons } from "@expo/vector-icons";
+import { createPost, getPosts } from "../api";
 
 import CustomButton from "../components/CustomButton";
 
 const Create = () => {
-  const [selectedValue, setSelectedValue] = useState("");
+  const [tags, setTags] = useState("");
   const [image, setImage] = useState(null);
+  const [prompt, setPrompt] = useState("");
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
+  const fetchPosts = async () => {
+    try {
+      const data = await getPosts();
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // console.log(tags, image, prompt, mark);
+
+  const mark = "Off";
+
+  const handleSubmit = async () => {
+    try {
+      await createPost({ prompt, tags, mark, image });
+      // fetchPosts();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // const handleSubmit = async () => {
+  //   console.log(image, tags, prompt, mark);
+  // };
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -53,6 +87,8 @@ const Create = () => {
                 className="text-white text-base w-full"
                 placeholder="Enter your prompt"
                 placeholderTextColor="#7B7B8B"
+                value={prompt}
+                onChangeText={setPrompt}
               />
             </View>
           </View>
@@ -64,7 +100,7 @@ const Create = () => {
             <View className="w-full h-16 px-2 bg-[#212129] rounded-2xl border-2 border-[#212129] flex flex-row items-center">
               <View style={pickerSelectStyles.inputAndroid}>
                 <RNPickerSelect
-                  onValueChange={(value) => setSelectedValue(value)}
+                  onValueChange={(value) => setTags(value)}
                   items={[
                     { label: "Dark", value: "Dark" },
                     { label: "Light", value: "Light" },
@@ -112,7 +148,11 @@ const Create = () => {
             <Image source={{ uri: image }} style={styles.image} />
           </View>
         )} */}
-          <CustomButton title="Create" containerStyles="mt-4" />
+          <CustomButton
+            handlePress={handleSubmit}
+            title="Create"
+            containerStyles="mt-4"
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
