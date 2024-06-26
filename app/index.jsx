@@ -12,20 +12,20 @@ export default function HomeScreen() {
           height: "100%",
         }}
       >
-        <View className="w-full flex justify-center items-center h-full px-4">
+        <View className="w-full flex justify-center items-center px-4">
           <Image
             source={mew}
-            className="w-[50vh] h-[45vh]"
+            className="w-[60vh] h-[60vh]"
             resizeMode="contain"
           />
           <View className="mt-4">
-            <Text className="text-3xl text-white font-bold text-center">
+            <Text className="text-2xl text-white font-bold text-center">
               Discover the Hidden Beauty {"\n"} of Cats With{" "}
               <Text className="text-orange-400 ">Flora</Text>
             </Text>
           </View>
           <View className="pr-8 pl-8 ">
-            <Text className="text-sm font-pregular text-gray-100 mt-7 text-center">
+            <Text className="text-[12px] text-gray-100 mt-5 text-center">
               Where Creativity Meets Innovation: Embark on a Journey of
               Limitless Exploration with Flora
             </Text>

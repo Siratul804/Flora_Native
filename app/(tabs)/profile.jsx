@@ -14,12 +14,12 @@ const Profile = () => {
         <View>
           <Image
             source={mew}
-            className="w-[50vh] h-[55vh]"
+            className="w-[50vh] h-[60vh]"
             resizeMode="contain"
           />
         </View>
-        <View className="mt-8">
-          <Text className="text-2xl text-white font-bold text-center ">
+        <View className="mt-2">
+          <Text className="text-[18px] text-white font-bold text-center ">
             {/* Log In With <Text className="text-orange-400">Flora</Text> */}
             By Creating A Profile Discover More !
           </Text>
