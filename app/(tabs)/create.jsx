@@ -75,7 +75,7 @@ const Create = () => {
       <ScrollView contentContainerStyle={{ height: "100%" }}>
         <View className=" pt-10 ">
           <Text className="text-2xl text-white font-bold text-center mb-4">
-            Create Your AI Generated Model:
+            Create Your AI Generated Model :
           </Text>
 
           <View className="mt-2">

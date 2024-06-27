@@ -13,7 +13,14 @@ import * as FileSystem from "expo-file-system";
 import { Feather } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 
-const ModalComponent = ({ isVisible, onClose, imageUri, prompt, tags }) => {
+const ModalComponent = ({
+  isVisible,
+  onClose,
+  imageUri,
+  prompt,
+  tags,
+  bookmark,
+}) => {
   const downloadImage = async () => {
     Alert.alert("Image Download Successfully !");
     const fileUri = FileSystem.documentDirectory + imageUri.split("/").pop();
@@ -52,14 +59,30 @@ const ModalComponent = ({ isVisible, onClose, imageUri, prompt, tags }) => {
           <Text className="font-bold pr-1 ">Download</Text>
           <Feather name="download" size={20} color="black" />
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={bookMark}
-          activeOpacity={0.7}
-          className="bg-orange-400 rounded-md mt-2 h-[5vh] w-[26vh] flex items-center justify-center flex-row "
-        >
-          <Text className="font-bold pr-1 ">Bookmark</Text>
-          <Ionicons name="bookmark-outline" size={20} color="black" />
-        </TouchableOpacity>
+
+        {bookmark === "Off" ? (
+          <>
+            <TouchableOpacity
+              onPress={bookMark}
+              activeOpacity={0.7}
+              className="bg-orange-400 rounded-md mt-2 h-[5vh] w-[26vh] flex items-center justify-center flex-row "
+            >
+              <Text className="font-bold pr-1 ">Bookmark</Text>
+              <Ionicons name="bookmark-outline" size={20} color="black" />
+            </TouchableOpacity>
+          </>
+        ) : (
+          <>
+            <TouchableOpacity
+              onPress={bookMark}
+              activeOpacity={0.7}
+              className="bg-orange-400 rounded-md mt-2 h-[5vh] w-[26vh] flex items-center justify-center flex-row "
+            >
+              <Text className="font-bold pr-1 ">Bookmark</Text>
+              <Ionicons name="bookmark" size={24} color="black" />
+            </TouchableOpacity>
+          </>
+        )}
       </View>
     </Modal>
   );

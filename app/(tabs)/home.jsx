@@ -18,7 +18,7 @@ const data = [
   {
     prompt: "A Dreamy Black Cat",
     tags: ["Dreamy", "Night"],
-    mark: "On",
+    mark: "Off",
     image: images.image1,
   },
   {
@@ -48,7 +48,7 @@ const data = [
   {
     prompt: "Aggressive Angry Cat",
     tags: ["Retrowave"],
-    mark: "Off",
+    mark: "On",
     image: images.image6,
   },
 ];
@@ -109,6 +109,7 @@ const Home = () => {
           imageUri={Image.resolveAssetSource(selectedItem.image).uri}
           prompt={selectedItem.prompt}
           tags={selectedItem.tags}
+          bookmark={selectedItem.mark}
         />
       )}
     </SafeAreaView>
